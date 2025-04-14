@@ -13,3 +13,7 @@ int main() {
     printf("Depois da troca: x = %d, y = %d\n", x, y); 
     return 0;
 }
+
+
+//isto é considerado um "call by address" ou "call by reference", onde o endereço da variável é passado para a função, permitindo que a função altere o valor original da variável.
+// Isso é útil quando você deseja que a função modifique os valores de variáveis fora de seu escopo local, como no exemplo acima.
