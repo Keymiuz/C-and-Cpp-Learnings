@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Projetos/CeC++",
-      "program": "c:/Projetos/CeC++/build/Debug/outDebug",
+      "cwd": "c:/Projetos/CeC++/Dia 03",
+      "program": "c:/Projetos/CeC++/Dia 03/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
