@@ -13,4 +13,5 @@ int main()
     int r;
     r=fact(5);
     printf("%d ", r);
+    return 0;
 }
