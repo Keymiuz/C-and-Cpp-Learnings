@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void fun1(int n)
 {
     if(n>0)
