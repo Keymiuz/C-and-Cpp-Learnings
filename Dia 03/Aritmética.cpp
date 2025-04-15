@@ -23,9 +23,5 @@ public:
 };
 
 int main() {
-    Arithmetic arith(10, 5);
-
-    cout<<"Adicao = "<<arith.add()<<endl;
-    cout<<"Subitracao = "<<arith.sub()<<endl;
-    return 0;
+   
 }
