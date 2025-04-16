@@ -39,4 +39,4 @@ A memória alocada dinamicamente no heap pode ser redimensionada usando a funç�
 
 7. Ponteiros e Arrays:
 
-Eu não cheguei a mexer ainda muito com ponteiros e arrays, a próxima matéria acho que vai entrar nos Arrays ADT, mas sei que você pode apontar para um elemento de um array por ponteiros, fazer calculos aritméticos, etc.
+Eu não cheguei a mexer ainda muito com ponteiros e arrays, a próxima matéria acho que vai entrar nos Arrays ADT(abstract), mas sei que você pode apontar para um elemento de um array por ponteiros, fazer calculos aritméticos, etc.
