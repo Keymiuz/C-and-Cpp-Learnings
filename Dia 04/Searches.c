@@ -1,14 +1,14 @@
 #include <stdio.h>
-#include <stdlib.h> // Para usar EXIT_FAILURE e EXIT_SUCCESS
+#include <stdlib.h> 
 
-// Definição da estrutura Array
+
 struct Array {
-    int *A;     // Ponteiro para o array dinâmico
-    int size;   // Tamanho máximo do array
-    int length; // Número atual de elementos no array
+    int *A;     o
+    int size;   
+    int length; 
 };
 
-// Função para criar um array dinamicamente
+
 struct Array* createArray(int size) {
     struct Array* arr = (struct Array*)malloc(sizeof(struct Array));
     if (arr == NULL) {
@@ -26,7 +26,7 @@ struct Array* createArray(int size) {
     return arr;
 }
 
-// Função para liberar a memória alocada para o array
+
 void freeArray(struct Array* arr) {
     free(arr->A);
     free(arr);
@@ -59,10 +59,10 @@ int BinarySearch(struct Array arr, int key) {
             l = mid + 1;
         }
     }
-    return -1; // Retorna -1 se a chave não for encontrada
+    return -1; 
 }
 
-// Função para exibir os elementos do array
+
 void Display(struct Array arr) {
     if (arr.length == 0) {
         printf("O array está vazio.\n");
@@ -75,7 +75,7 @@ void Display(struct Array arr) {
     printf("\n");
 }
 
-// Função para inserir um elemento em um índice específico
+
 int Insert(struct Array *arr, int index, int value) {
     if (index < 0 || index > arr->length || arr->length == arr->size) {
         return 0; // Falha na inserção: índice inválido ou array cheio
