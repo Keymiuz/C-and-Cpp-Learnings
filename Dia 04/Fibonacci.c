@@ -4,7 +4,7 @@ long long int fib_iterativo(int n) {
     if (n <= 1) {
         return n;
     }
-    long long int a = 0;
+    long long int a = 0;   // (long long) capaz de armazenar mais dados sem dar overflow 
     long long int b = 1;
     long long int temp;
     for (int i = 2; i <= n; i++) {
