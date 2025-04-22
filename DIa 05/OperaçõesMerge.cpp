@@ -110,3 +110,10 @@ int main() {
     cout << "Programa finalizado." << endl;
     return 0; 
 }
+
+
+
+
+
+
+// o merge só pode ser feito com 10 elementos máximos (definidos pelo array), se não o código buga :)
