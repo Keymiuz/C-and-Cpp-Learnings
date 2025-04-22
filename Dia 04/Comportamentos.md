@@ -40,3 +40,8 @@ A memória alocada dinamicamente no heap pode ser redimensionada usando a funç�
 7. Ponteiros e Arrays:
 
 Eu não cheguei a mexer ainda muito com ponteiros e arrays, a próxima matéria acho que vai entrar nos Arrays ADT(abstract), mas sei que você pode apontar para um elemento de um array por ponteiros, fazer calculos aritméticos, etc.
+
+8. Anotações +:
+
+Chegando na parte de Arrays ADT, eu vi que não tinha muito o que adicionar nesse doc, eu só trabalhei mais as operações e a lógica matemática por traz das operações. Mas foi um capítulo bem interessante do curso para entender a lógica matemática por trás de C, como por exemplo: Aprendi que o metodo "sort" não existe em C, até existe um qsort, mas você tem que declarar e implementar sua própria função de comparação para ordenar seus dados. Outra coisa que eu aprendi foi quando usar métodos já atribuidos diretamente na linguaguem, e quando é mais conveniente fazer "o seu próprio método" (com loops etc). 
+//para arrays muito pequenos e/ou você precisa de um algoritmo de ordenação específico com propriedades particulares normalmente a gente cria nosso próprio metodo, de resto a gente usa métodos já implementados na linguaguem como o qsort (arrays grandes você nem perde seu tempo escrevendo um método).
