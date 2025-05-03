@@ -26,8 +26,9 @@ private:
     };
 
 public:
-    MatrizTriangular(int tamanho, TipoMatriz tipo) : n(tamanho), tipo(tipo) {
-        int tamanhoVetor = (n * (n + 1)) / 2;
+    // Corrigido para evitar shadowing de 'tipo'
+    MatrizTriangular(int tamanho, TipoMatriz tipoParam) : n(tamanho), tipo(tipoParam) {
+        size_t tamanhoVetor = (n * (n + 1)) / 2;  // Usei std::size_t para evitar conversão de sinal
         valores.resize(tamanhoVetor, 0);
     };
 
@@ -58,7 +59,7 @@ public:
             for (int j = 1; j <= n; ++j) {
                 arq << obter(i, j) << " ";
             }
-            arq << endl;
+            arq << "\n";
         }
         arq.close();
     };
@@ -76,19 +77,36 @@ public:
 
         return resultado;
     }
+
+    // Salvar em arquivo binário
+    void salvarEmBinario(const string& nomeArquivo) const {
+        ofstream arq(nomeArquivo, ios::binary);
+        size_t tamanhoVetor = valores.size();
+        arq.write(reinterpret_cast<const char*>(&tamanhoVetor), sizeof(tamanhoVetor));
+        arq.write(reinterpret_cast<const char*>(valores.data()), tamanhoVetor * sizeof(T));
+        arq.close();
+    }
+
+    // Carregar de arquivo binário
+    void carregarDeBinario(const string& nomeArquivo) {
+        ifstream arq(nomeArquivo, ios::binary);
+        size_t tamanhoVetor;
+        arq.read(reinterpret_cast<char*>(&tamanhoVetor), sizeof(tamanhoVetor));
+        valores.resize(tamanhoVetor);
+        arq.read(reinterpret_cast<char*>(valores.data()), tamanhoVetor * sizeof(T));
+        arq.close();
+    }
 };
 
 int main() {
     int tamanho;
-    cout << "Informe a dimensão da matriz:" << endl;
-    cout.flush();
+    cout << "Informe a dimensão da matriz: ";
     cin >> tamanho;
 
     MatrizTriangular<double> m1(tamanho, TipoMatriz::TRIANGULAR_INFERIOR);
     MatrizTriangular<double> m2(tamanho, TipoMatriz::TRIANGULAR_INFERIOR);
 
-    cout << "Digite os elementos da primeira matriz:" << endl;
-    cout.flush();
+    cout << "Digite os elementos da primeira matriz:\n";
     for (int i = 1; i <= tamanho; ++i) {
         for (int j = 1; j <= tamanho; ++j) {
             double valor;
@@ -97,8 +115,7 @@ int main() {
         }
     }
 
-    cout << "Digite os elementos da segunda matriz:" << endl;
-    cout.flush();
+    cout << "Digite os elementos da segunda matriz:\n";
     for (int i = 1; i <= tamanho; ++i) {
         for (int j = 1; j <= tamanho; ++j) {
             double valor;
@@ -107,12 +124,17 @@ int main() {
         }
     }
 
-    cout << "\nResultado da soma:" << endl;
+    cout << "\nResultado da soma:\n";
     MatrizTriangular<double> soma = m1 + m2;
     soma.exibir();
-
-    
     soma.exportarParaArquivo("soma_matrizes.txt");
+    soma.salvarEmBinario("soma_matrizes.bin");
+
+    // Carregar de arquivo binário
+    MatrizTriangular<double> m3(tamanho, TipoMatriz::TRIANGULAR_INFERIOR);
+    m3.carregarDeBinario("soma_matrizes.bin");
+    cout << "\nMatriz carregada do arquivo binário:\n";
+    m3.exibir();
 
     return 0;
 }
