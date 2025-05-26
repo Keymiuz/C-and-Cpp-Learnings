@@ -4,40 +4,49 @@
 struct Node {
     int data;
     struct Node *next;
-}*first = NULL, *second = NULL, *third = NULL; 
+}; 
 
-void create(int A[], int n) {
-    int i;
+
+struct Node* create(int A[], int n) {
+    struct Node *head = NULL;
     struct Node *t, *last;
-    first = (struct Node *)malloc(sizeof(struct Node));
-    first->data = A[0];
-    first->next = NULL;
-    last = first;
+    
+    if (n <= 0) return NULL; 
 
-    for (i = 1; i < n; i++) {
+    head = (struct Node *)malloc(sizeof(struct Node));
+    head->data = A[0];
+    head->next = NULL;
+    last = head;
+
+    for (int i = 1; i < n; i++) {
         t = (struct Node *)malloc(sizeof(struct Node));
         t->data = A[i];
         t->next = NULL;
         last->next = t;
         last = t;
     }
+    return head; 
 }
 
-void create2(int A[], int n) {
-    int i;
+struct Node* create2(int A[], int n) {
+    struct Node *head = NULL;
     struct Node *t, *last;
-    second = (struct Node *)malloc(sizeof(struct Node));
-    second->data = A[0];
-    second->next = NULL;
-    last = second;
+    
+    if (n <= 0) return NULL;
 
-    for (i = 1; i < n; i++) {
+    head = (struct Node *)malloc(sizeof(struct Node));
+    head->data = A[0];
+    head->next = NULL;
+    last = head;
+
+    for (int i = 1; i < n; i++) {
         t = (struct Node *)malloc(sizeof(struct Node));
         t->data = A[i];
         t->next = NULL;
         last->next = t;
         last = t;
     }
+    return head; // Retorna o head da lista criada
 }
 
 // Função para exibir a lista encadeada (forma iterativa)
@@ -63,7 +72,8 @@ int Soma(struct Node *p) {
     return Soma(p->next) + p->data;
 }
 
-int conta(struct Node *p) {
+
+int conta(struct Node *p) { 
     int x = 0;
     while (p != NULL) {
         x++;
@@ -73,7 +83,6 @@ int conta(struct Node *p) {
 }
 
 int maior(struct Node *p) {
-    // Inicializa max com o menor valor possível para int
     int max = -2147483648; 
     if (p != NULL) {
         max = p->data; 
@@ -106,16 +115,18 @@ int menor(struct Node *p) {
 }
 
 // Função de busca linear e otimização (Move-To-Front/Transpose)
-struct Node * search(struct Node *p, int key) {
-    struct Node *q = NULL; // Ponteiro para o nó anterior
+struct Node * search(struct Node **headRef, int key) {
+    struct Node *p = *headRef; 
+    struct Node *q = NULL;    
+
     while (p != NULL) {
         if (key == p->data) {
             if (q != NULL) { 
-                q->next = p->next;
-                p->next = first;
-                first = p;
+                q->next = p->next; 
+                p->next = *headRef; 
+                *headRef = p;       
             }
-            return p;
+            return p; 
         }
         q = p;
         p = p->next;
@@ -123,12 +134,12 @@ struct Node * search(struct Node *p, int key) {
     return NULL; 
 }
 
-void Insert(struct Node *p, int index, int x) {
+void Insert(struct Node **headRef, int index, int x) {
     struct Node *t;
+    struct Node *p = *headRef; // Ponteiro para percorrer
     int i;
 
-    
-    if (index < 0 || index > conta(p)) { 
+    if (index < 0 || index > conta(*headRef)) { 
         printf("Índice inválido para inserção.\n");
         return;
     }
@@ -136,9 +147,9 @@ void Insert(struct Node *p, int index, int x) {
     t = (struct Node *)malloc(sizeof(struct Node));
     t->data = x;
 
-    if (index == 0) { 
-        t->next = first;
-        first = t;
+    if (index == 0) { // Inserir no início
+        t->next = *headRef;
+        *headRef = t; // Atualiza o head
     } else { 
         for (i = 0; i < index - 1; i++) {
             p = p->next;
@@ -148,24 +159,23 @@ void Insert(struct Node *p, int index, int x) {
     }
 }
 
-void InsertSorted(struct Node *p, int x) {
-    struct Node *t, *q = NULL; 
+void InsertSorted(struct Node **headRef, int x) {
+    struct Node *t, *p = *headRef, *q = NULL; 
 
     t = (struct Node *)malloc(sizeof(struct Node));
     t->data = x;
     t->next = NULL;
 
-    if (first == NULL) { 
-        first = t;
+    if (*headRef == NULL) { // Se a lista estiver vazia
+        *headRef = t; // Atualiza o head
     } else {
-        
         while (p != NULL && p->data < x) {
             q = p; 
             p = p->next;
         }
-        if (p == first) { 
-            t->next = first;
-            first = t;
+        if (p == *headRef) { // Inserir no início (novo elemento é o menor)
+            t->next = *headRef;
+            *headRef = t; // Atualiza o head
         } else { 
             t->next = q->next;
             q->next = t;
@@ -225,7 +235,9 @@ void mergeSort(struct Node **headRef) {
     *headRef = sortedMerge(a, b);
 }
 
-void Reverse(struct Node *p){
+//Invert da lista
+void Reverse(struct Node **headRef){
+    struct Node *p = *headRef; 
     struct Node *q = NULL, *r = NULL;
     while(p!=NULL){
         r = q;
@@ -233,36 +245,51 @@ void Reverse(struct Node *p){
         p = p->next;
         q->next = r;
     }
-    first = q;
+    *headRef = q; 
+}
+
+// Função para liberar a memória da lista (boa prática)
+void freeList(struct Node *head) {
+    struct Node *current = head;
+    struct Node *next_node;
+    while (current != NULL) {
+        next_node = current->next;
+        free(current);
+        current = next_node;
+    }
 }
 
 
 int main() {
-    int A[] = {3, 6, 7, 9}; // Exemplo de array desordenado
-    create(A, 4); 
+    struct Node *firstList = NULL;
+    struct Node *secondList = NULL;
+    struct Node *mergedResultList = NULL; // Usar uma variável local para o resultado da mesclagem
+
+    int A[] = {3, 6, 7, 9}; 
+    firstList = create(A, 4); // Crie a primeira lista
+
     int B[] = {1, 2, 4, 5};
-    create2(B, 4);
+    secondList = create2(B, 4); // Crie a segunda lista
 
     printf("Primeira Lista: ");
-    Display(first);
-    printf("\n\n");
+    Display(firstList);
+    printf("\n");
     printf("Segunda Lista: ");
-    Display(second);
-    printf("\n\n");
+    Display(secondList);
+    printf("\n");
 
-    struct Node *third = NULL;
-    third = sortedMerge(first, second);
-    printf("Lista Mesclada e Ordenada: ");
-    Display(third);
-    printf("\n\n");
+    mergedResultList = sortedMerge(firstList, secondList);
+    printf("Lista Mesclada e Ordenada (inicial): ");
+    Display(mergedResultList);
+    printf("\n");
 
-    printf("Soma: %d\n", Soma(third));
-    printf("Quantidade de elementos: %d\n", conta(third));
-    printf("Maior elemento: %d\n", maior(third));
-    printf("Menor elemento: %d\n", menor(third));
+    printf("Soma: %d\n", Soma(mergedResultList));
+    printf("Quantidade de elementos: %d\n", conta(mergedResultList));
+    printf("Maior elemento: %d\n", maior(mergedResultList));
+    printf("Menor elemento: %d\n", menor(mergedResultList));
+    printf("\n");
         
-    
-    struct Node *temp = search(third, 7); 
+    struct Node *temp = search(&mergedResultList, 7); 
     if (temp != NULL) {
         printf("Elemento encontrado e movido para o início: %d\n", temp->data);
     } else {
@@ -270,23 +297,30 @@ int main() {
     }
 
     printf("Lista após busca (e possível reorganização): ");
-    Display(first);
+    Display(mergedResultList);
+    printf("\n");
 
-    Insert(first, 0, 10);     
-    Insert(first, 3, 1000);   
-    InsertSorted(first, 5); 
+    
+    Insert(&mergedResultList, 0, 10);     
+    Insert(&mergedResultList, 3, 1000);   
+    InsertSorted(&mergedResultList, 5); 
 
     printf("Lista após inserções: ");
-    Display(first);
+    Display(mergedResultList);
+    printf("\n");
 
-    mergeSort(&first); 
+    
+    mergeSort(&mergedResultList); 
 
     printf("Lista final ordenada: ");
-    Display(first);
+    Display(mergedResultList);
+    printf("\n");
 
-    Reverse(first);
+    
+    Reverse(&mergedResultList);
 
     printf("Lista invertida: ");
-    Display(first);
-    
+    Display(mergedResultList);
+    printf("\n");
+    return 0;
 }
