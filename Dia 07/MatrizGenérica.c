@@ -96,24 +96,3 @@ int main() {
 
 
 
-// output esperado para exemplo: 
-// Informe a dimens├úo da matriz: 3
-// Tipo da matriz:
-// 1 - Triangular Inferior
-// 2 - Triangular Superior
-// Escolha (1 ou 2): 2
-// Digite os elementos da matriz:
-// 1
-// 2
-// 3
-// 4
-// 5
-// 6
-// 7
-// 8
-// 9
-
-// Matriz resultante:
-// 1 2 3
-// 0 5 6
-// 0 0 9
