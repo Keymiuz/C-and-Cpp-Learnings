@@ -214,6 +214,16 @@ void mergeSort(struct Node **headRef) {
     *headRef = sortedMerge(a, b);
 }
 
+void Reverse(struct Node *p){
+    struct Node *q = NULL, *r = NULL;
+    while(p!=NULL){
+        r = q;
+        q = p;
+        p = p->next;
+        q->next = r;
+    }
+    first = q;
+}
 
 
 int main() {
@@ -246,10 +256,14 @@ int main() {
     printf("Lista após inserções: ");
     Display(first);
 
-    
     mergeSort(&first); 
 
     printf("Lista final ordenada: ");
+    Display(first);
+
+    Reverse(first);
+
+    printf("Lista invertida: ");
     Display(first);
 
     return 0;
