@@ -28,12 +28,17 @@ void Display(struct Node *p) {
         printf("%d ", p->data);
         p = p->next;
     }
-}
+}  //forma iterativa
 
-
+void RDisplay(struct Node *p) {
+    if(p!=NULL){
+        printf("%d ", p->data);
+        RDisplay(p->next);
+    }
+}  //forma recursiva
 
 int main() {
     int A[] = {3,5,7,10,15};    
     create(A,5);
-    Display(first);
+    RDisplay(first);
 }
