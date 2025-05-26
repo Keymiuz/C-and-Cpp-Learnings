@@ -4,7 +4,7 @@
 struct Node {
     int data;
     struct Node *next;
-}*first = NULL; 
+}*first = NULL, *second = NULL, *third = NULL; 
 
 void create(int A[], int n) {
     int i;
@@ -13,6 +13,23 @@ void create(int A[], int n) {
     first->data = A[0];
     first->next = NULL;
     last = first;
+
+    for (i = 1; i < n; i++) {
+        t = (struct Node *)malloc(sizeof(struct Node));
+        t->data = A[i];
+        t->next = NULL;
+        last->next = t;
+        last = t;
+    }
+}
+
+void create2(int A[], int n) {
+    int i;
+    struct Node *t, *last;
+    second = (struct Node *)malloc(sizeof(struct Node));
+    second->data = A[0];
+    second->next = NULL;
+    last = second;
 
     for (i = 1; i < n; i++) {
         t = (struct Node *)malloc(sizeof(struct Node));
@@ -71,7 +88,6 @@ int maior(struct Node *p) {
     }
     return max;
 }
-
 
 int menor(struct Node *p) {
     int min = 2147483647; 
@@ -133,7 +149,7 @@ void Insert(struct Node *p, int index, int x) {
 }
 
 void InsertSorted(struct Node *p, int x) {
-    struct Node *t, *q = NULL; // q é o ponteiro trailing
+    struct Node *t, *q = NULL; 
 
     t = (struct Node *)malloc(sizeof(struct Node));
     t->data = x;
@@ -142,9 +158,9 @@ void InsertSorted(struct Node *p, int x) {
     if (first == NULL) { 
         first = t;
     } else {
-       
+        
         while (p != NULL && p->data < x) {
-            q = p; // q acompanha p
+            q = p; 
             p = p->next;
         }
         if (p == first) { 
@@ -157,14 +173,12 @@ void InsertSorted(struct Node *p, int x) {
     }
 }
 
-
 void splitList(struct Node *source, struct Node **frontRef, struct Node **backRef) {
     struct Node *fast;
     struct Node *slow;
     slow = source;
     fast = source->next;
 
-    // fast avança dois nós, slow avança um nó
     while (fast != NULL) {
         fast = fast->next;
         if (fast != NULL) {
@@ -173,16 +187,14 @@ void splitList(struct Node *source, struct Node **frontRef, struct Node **backRe
         }
     }
 
-    // slow é o nó anterior ao ponto médio
     *frontRef = source;
     *backRef = slow->next;
-    slow->next = NULL; // Quebra a lista em duas
+    slow->next = NULL;
 }
 
 struct Node *sortedMerge(struct Node *a, struct Node *b) {
     struct Node *result = NULL;
 
-    // Casos base
     if (a == NULL) return b;
     if (b == NULL) return a;
 
@@ -205,7 +217,6 @@ void mergeSort(struct Node **headRef) {
         return;
     }
 
-    // Divide a lista em 'a' e 'b'
     splitList(head, &a, &b);
 
     mergeSort(&a);
@@ -227,19 +238,31 @@ void Reverse(struct Node *p){
 
 
 int main() {
-    int A[] = {3, 6, 7, 2, 9, 1}; // Exemplo de array desordenado
-    create(A, 6); 
+    int A[] = {3, 6, 7, 9}; // Exemplo de array desordenado
+    create(A, 4); 
+    int B[] = {1, 2, 4, 5};
+    create2(B, 4);
 
-    printf("Lista original: ");
+    printf("Primeira Lista: ");
     Display(first);
+    printf("\n\n");
+    printf("Segunda Lista: ");
+    Display(second);
+    printf("\n\n");
 
-    printf("Soma: %d\n", Soma(first));
-    printf("Quantidade de elementos: %d\n", conta(first));
-    printf("Maior elemento: %d\n", maior(first));
-    printf("Menor elemento: %d\n", menor(first));
+    struct Node *third = NULL;
+    third = sortedMerge(first, second);
+    printf("Lista Mesclada e Ordenada: ");
+    Display(third);
+    printf("\n\n");
+
+    printf("Soma: %d\n", Soma(third));
+    printf("Quantidade de elementos: %d\n", conta(third));
+    printf("Maior elemento: %d\n", maior(third));
+    printf("Menor elemento: %d\n", menor(third));
         
     
-    struct Node *temp = search(first, 7); 
+    struct Node *temp = search(third, 7); 
     if (temp != NULL) {
         printf("Elemento encontrado e movido para o início: %d\n", temp->data);
     } else {
@@ -249,8 +272,8 @@ int main() {
     printf("Lista após busca (e possível reorganização): ");
     Display(first);
 
-    Insert(first, 0, 10);     // Inserção no início
-    Insert(first, 3, 1000);   // Inserção na posição 3 (agora é a posição 3 na lista atual)
+    Insert(first, 0, 10);     
+    Insert(first, 3, 1000);   
     InsertSorted(first, 5); 
 
     printf("Lista após inserções: ");
@@ -265,10 +288,5 @@ int main() {
 
     printf("Lista invertida: ");
     Display(first);
-
-    return 0;
+    
 }
-
-
-
-// todas as funções acima estão funcionando, inseridas e ordenadas, faltou só a de inverter a lista, que não consegui fazer.
