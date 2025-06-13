@@ -45,8 +45,7 @@ int precedencia(char x){
 
 
 // Função para verificar se um caractere é um operando (letra ou número)
-int eOperando(char x)
-{
+int eOperando(char x){
     if (x == '+' || x == '-' || x == '*' || x == '/')
         return 0; 
     else
@@ -76,18 +75,16 @@ char* InfixoParaPosfixo(char* infixo){
     while (topo != NULL && topo->dado != '#'){
         posfixo[j++] = desempilhar();
     }
-
     posfixo[j] = '\0'; 
     return posfixo;
 }
 
 int main(){
-    char *infixo = "a+b*c-d/e";
+    char *infixo = "a+b*2-c/d/2c";
     empilhar('#'); 
     char *posfixo = InfixoParaPosfixo(infixo);
     printf("Expressão Infixa: %s\n", infixo);
     printf("Expressão Pós-fixa: %s\n", posfixo);
     free(posfixo); 
-
     return 0;
 }
