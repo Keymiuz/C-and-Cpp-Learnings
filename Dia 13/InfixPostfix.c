@@ -40,16 +40,16 @@ int precedencia(char x){
         return 1;
     else if (x == '*' || x == '/')
         return 2;
-    return 0; 
+    return 0;
 }
 
 
 // Função para verificar se um caractere é um operando (letra ou número)
 int eOperando(char x){
     if (x == '+' || x == '-' || x == '*' || x == '/')
-        return 0; 
+        return 0;
     else
-        return 1; 
+        return 1;
 }
 
 // Função para converter uma expressão Infixa para Pós-fixa
@@ -57,7 +57,7 @@ char* InfixoParaPosfixo(char* infixo){
     int i = 0, j = 0;
     char* posfixo;
     int len = strlen(infixo);
-    posfixo = (char*)malloc((len + 2) * sizeof(char)); 
+    posfixo = (char*)malloc((len + 2) * sizeof(char));
 
     while (infixo[i] != '\0'){
         if (eOperando(infixo[i])){
@@ -75,16 +75,32 @@ char* InfixoParaPosfixo(char* infixo){
     while (topo != NULL && topo->dado != '#'){
         posfixo[j++] = desempilhar();
     }
-    posfixo[j] = '\0'; 
+    posfixo[j] = '\0';
     return posfixo;
 }
 
 int main(){
-    char *infixo = "a+b*2-c/d/2c";
-    empilhar('#'); 
-    char *posfixo = InfixoParaPosfixo(infixo);
-    printf("Expressão Infixa: %s\n", infixo);
-    printf("Expressão Pós-fixa: %s\n", posfixo);
-    free(posfixo); 
+    char *infixo1 = "a+b*2-c/d+2c";
+    empilhar('#');
+    char *posfixo1 = InfixoParaPosfixo(infixo1);
+    printf("Expressão Infixa: %s\n", infixo1);
+    printf("Expressão Pós-fixa: %s\n", posfixo1);
+    free(posfixo1);
+
+    // Reseta a stack para a proxima conversão (é necessário, tive que adicionar kkkk)
+    while (topo != NULL) {
+        desempilhar();
+    }
+
+    char *infixo2 = "a+b*2-c/d+2/22a-c";
+    empilhar('#');
+    char *posfixo2 = InfixoParaPosfixo(infixo2);
+    printf("Expressão Infixa: %s\n", infixo2);
+    printf("Expressão Pós-fixa: %s\n", posfixo2);
+    free(posfixo2);
     return 0;
 }
+
+
+
+// depois de muitas alterações, aogra sim!
