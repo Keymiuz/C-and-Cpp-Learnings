@@ -35,3 +35,13 @@ Altura máxima --  h = n - 1 / m
 
 external nodes = (m-1)i + 1
 internal nodes = i
+
+
+tive que rodar esse código no meu CMD pois ele não estava funcionando no VS Code, mas caso você queira executar ele em casa:
+ de um cd até essa pasta (dia 15) e compile o main.c com o queue.c 
+
+
+ o código é: gcc main.c Queue.c -o arvore_binaria
+
+
+ depois você só roda um ./arvore_binaria.exe e o código automaticamente rodará
