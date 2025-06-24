@@ -1,0 +1,8 @@
+                                                       --Árvore AVL (Adelson-Velsky e Landis)--
+Tipo de Árvore: É uma Árvore de Busca Binária (BST) auto balanceada. Isso significa que cada nó tem no máximo dois filhos (esquerda e direita).
+
+Balanceamento: O balanceamento é mantido através do fator de balanceamento de cada nó. O fator de balanceamento é a diferença entre a altura da subárvore esquerda e a altura da subárvore direita. Em uma árvore AVL, o fator de balanceamento de qualquer nó deve ser −1, 0 ou 1.
+Mecanismo de Balanceamento: Quando uma inserção ou remoção desequilibra a árvore (ou seja, o fator de balanceamento de um nó se torna maior que 1 ou menor que −1), a árvore realiza rotações. Existem quatro tipos principais de rotações: rotação simples à esquerda (LL), rotação simples à direita (RR), rotação dupla à esquerda-direita (LR) e rotação dupla à direita-esquerda (RL). Essas rotações rearranjam os nós para restaurar a propriedade de balanceamento.
+Dados nos Nós: Cada nó armazena uma única chave (ou valor) e ponteiros para seus filhos esquerdo e direito, além da altura de sua subárvore ou seu fator de balanceamento.
+
+Rigidez do Balanceamento: Árvores AVL são consideradas mais estritamente balanceadas do que outras árvores balanceadas (ainda não entedi exatamente o por que, mas acho que é por causa da altura que a árvore tem que ser balanceada) (ou pela quantidade de rotações) KKKKKKKKK
