@@ -61,6 +61,14 @@ struct Node* Search(int key) {
     return NULL;
 }
 
+void Sum(struct Node *p) {
+    if (p) {
+        Sum(p->lchild);
+        Sum(p->rchild);
+    }
+    return 0;
+}
+
 
 int main() {
     insert(10);
