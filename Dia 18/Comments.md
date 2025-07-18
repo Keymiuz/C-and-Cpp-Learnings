@@ -62,3 +62,21 @@ Este documento contém anotações sobre os algoritmos de ordenação implementa
     * Pode ser $O(n)$ no pior caso de recursão.
 * **Estabilidade:** Não é estável por padrão.
 * **Uso:** É um dos algoritmos de ordenação mais rápidos e mais usados na prática para grandes conjuntos de dados. A escolha do pivô é crucial para seu desempenho.
+
+## 5. Count Sort
+* **Paradigma:** Contagem.
+* **Como Funciona:**
+    * O Count Sort é um algoritmo de ordenação baseado na contagem de elementos.
+    * Ele cria um array auxiliar (chamado de array de contagem) para contar a frequência de cada elemento no array original.
+    * Em seguida, ele percorre o array de contagem e constrói o array ordenado, colocando os elementos na ordem correta.
+* **Complexidade de Tempo (Pior Caso):** $O(n + k)$
+    * Ocorre quando o array está em ordem inversa, pois cada elemento precisa ser movido até o início da sub-array ordenada.
+* **Complexidade de Tempo (Melhor Caso):** $O(n + k)$
+    * Ocorre quando o array já está ordenado, pois cada elemento é comparado apenas uma vez e não há deslocamentos significativos.
+* **Complexidade de Espaço:** $O(k)$
+    * Ocorre quando o array está em ordem inversa, pois cada elemento precisa ser movido até o início da sub-array ordenada.
+* **Estabilidade:** Não é estável por padrão.
+* **Uso:** É um dos algoritmos de ordenação mais rápidos e mais usados na prática para grandes conjuntos de dados. A escolha do pivô é crucial para seu desempenho.
+
+
+Nestas anotações, n é o tamanho do array e k é o valor máximo do array, e se o sort tem K, indica que tiveram merge ou count sort de K arrays.
