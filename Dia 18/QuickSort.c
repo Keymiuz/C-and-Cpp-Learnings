@@ -9,6 +9,36 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
+int partition(int A[], int l, int h) {
+    int pivot = A[l];
+    int i = l + 1;
+    int j = h;
+
+    while (i <= j) {
+        while (i <= j && A[i] <= pivot) i++;
+        while (i <= j && A[j] > pivot) j--;
+        
+        if (i < j) {
+            swap(&A[i], &A[j]);
+            i++;
+            j--;
+        }
+    }
+    
+    swap(&A[l], &A[j]);
+    return j;
+}// neste código, o partition serve para encontrar o pivô e ordenar o array de forma que todos os elementos menores que o pivô 
+// fiquem à esquerda e todos os elementos maiores que o pivô fiquem à direita (o pivô é o primeiro elemento do subarray)
+
+void QuickSort(int A[],int l,int h) {
+ int j;
+ if(l<h) {
+    j=partition(A,l,h);
+    QuickSort(A,l,j-1);
+    QuickSort(A,j+1,h);
+ }
+} // implementação do quicksort com recursão por divisão de subarrays com auxílio do pivô. 
+
 
 void printArray(int A[], int n) {
     int i;
@@ -17,25 +47,6 @@ void printArray(int A[], int n) {
     }
 }
 
-void QuickSort(int A[], int n) {
-    int i, j, pivot, temp;
-    i = 0;
-    j = n - 1;
-    pivot = A[n / 2];
-    while (i < j) {
-        while (A[i] < pivot) {
-            i++;
-        }
-        while (A[j] > pivot) {
-            j--;
-        }
-        if (i < j) {
-            swap(&A[i], &A[j]);
-        }
-    }
-    QuickSort(A, i);
-    QuickSort(A + i + 1, n - i - 1);
-}
 
 void SelectionSort(int A[], int n) {
     int i, j, min;
@@ -80,23 +91,14 @@ void InsertionSort(int A[], int n) {
     }
 }
 
-int main() {
-    int A[] = {10, 20, 30, 25, 5, 40, 45}, n=7, i;
-    QuickSort(A, n);
-    printf("\n");
-    printArray(A, n);
-    printf("\n");
-    BubbleSort(A, n);
-    printf("\n");
-    printArray(A, n);
-    printf("\n");
-    InsertionSort(A, n);
-    printf("\n");
-    printArray(A, n);
-    printf("\n");
-    SelectionSort(A, n);
-    printf("\n");
-    printArray(A, n);
-    printf("\n");
-    return 0;
+int main(){
+ int A[]={11,13,7,12,16,9,24,5,10,3},n=10,i;
+
+ QuickSort(A, 0, n-1);
+
+ for(i=0;i<n;i++){
+ printf("%d ",A[i]);
+ }
+ printf("\n");
+ return 0;
 }
