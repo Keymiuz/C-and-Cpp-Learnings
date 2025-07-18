@@ -47,6 +47,32 @@ Para uma busca bem-sucedida, o melhor cenário é quando a chave está no primei
 **Complexidade média para uma busca bem-sucedida em hashing aberto (chaining), assumindo uma distribuição uniforme:** O(1+λ/2). No cenário ideal de "melhor caso", onde você encontra o item imediatamente no primeiro slot, é O(1).
 
 
+#### Linear probing
+
+Linear probing é uma  bem simples de se entender. O que ela resolve? Ela resolve colisões que envolve a busca por uma posição vazia na tabela de hash em sequência linear. Cada posição da tabela de hash contém uma chave, e se uma colisão ocorrer, o algoritmo procura a próxima posição vazia na tabela. (Em suma, armazena os key_values na proxima posição aberta possível).
+
+A "lista de procura" é ciclica, digamos que você comece uma busca no indice 5 e vá até o 10, se todos os valores estiverem ocupados, ele volta para o 0 e continua a busca por um valor vazio. Para realizar a busca, você vai até o index correspondente ao valor e verifica se ele existe ou não, se não for encontrado, você vai para o próximo index e verifica se ele existe ou não, e assim por diante (até você achar um valor nulo, então ele para a busca, ou seja: Empty space = Pare a busca, se não, percorra a lista (é um tipo de linear search)).
+
+
+**Complexidade no Pior Caso (para busca mal-sucedida)**: O(n).
+
+**Complexidade Média (com distribuição uniforme e λ razoável):**
+Para busca bem-sucedida: O(1/(1−λ))
+Para busca mal-sucedida ou inserção: O(1/(1−λ)²)
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
