@@ -34,17 +34,17 @@
 
  A complexidade de tempo das operações de hash (busca, inserção, remoção) depende muito do fator de carga (λ) e da eficácia da função de hash.
 
- **Fator de Carga (λ):** É a relação entre o número total de chaves (n) e o número total de índices (tamanho da tabela m). Ou seja, λ=n/m. Um λ baixo significa menos colisões.
+ **Fator de Carga (λ):** É a relação entre o número total de chaves (n) e o número total de índices (tamanho da tabela m). Ou seja, λ=n/m. Um λ baixo significa menos colisões
 
- **Complexidade no Pior Caso (para busca mal-sucedida):** O(λ).
+ **Complexidade no Pior Caso (para busca mal-sucedida):** O(λ)
 
  Para uma busca mal-sucedida (tentando encontrar uma chave que não está na tabela), no pior caso (quando todos os elementos estão na mesma lista por uma colisão em massa), você teria que percorrer todos os n elementos naquela única lista. No entanto, para o caso médio, é O(1+λ) ou simplesmente O(λ) se λ for grande.
 
- **Complexidade no Melhor Caso (para busca bem-sucedida):** O(1).
+ **Complexidade no Melhor Caso (para busca bem-sucedida):** O(1)
 
- Para uma busca bem-sucedida, o melhor cenário é quando a chave está no primeiro nó da lista encadeada (ou no slot direto no endereçamento aberto). Isso leva tempo constante, O(1).
+ Para uma busca bem-sucedida, o melhor cenário é quando a chave está no primeiro nó da lista encadeada (ou no slot direto no endereçamento aberto). Isso leva tempo constante, O(1)
 
- **Complexidade média para uma busca bem-sucedida em hashing aberto (chaining), assumindo uma distribuição uniforme:** O(1+λ/2). No cenário ideal de "melhor caso", onde você encontra o item imediatamente no primeiro slot, é O(1).
+ **Complexidade média para uma busca bem-sucedida em hashing aberto (chaining), assumindo uma distribuição uniforme:** O(1+λ/2). No cenário ideal de "melhor caso", onde você encontra o item imediatamente no primeiro slot, é O(1)
 
 
 #### Linear probing
