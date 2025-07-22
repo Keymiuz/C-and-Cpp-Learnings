@@ -48,6 +48,8 @@ Ele também dá outro exemplo com uma Spanning Tree que forma um looping, no qua
 **Escolha Gulosa:** Em cada passo, selecionar o vértice não visitado que possui a menor distância conhecida a partir da origem. Após visitar um vértice, atualiza-se a distância de seus vizinhos.
 (Caso precise de uma visualização melhor, existe uma explicação mais detalhada no curso e também em um vídeo de um jovem de 18 anos respondendo perguntas de uma entrevista de emprego para o Google, achei esse o mais difícil de visualizar mentalmente)
 
+Neste exemplo ele usa o Grafo com looping, mas "abrevia" ele em um grafo menor, conectando os pontos com menor valor entre as arestas, e no que eles não consegue conectar ele colocava o símbolo de infinadade (Inicialmente), depois ia conectando os pontos com seus menores valores subsequencialmente. (Ele fez um sudo code, mas não é necessário para a visualização, então deixarei fora)
+
 
 ### Padrão de Intercalação Ótima (Optimal Merge Pattern)
 **Problema:** Dados `N` arquivos de tamanhos diferentes, todos já ordenados, qual é a maneira mais eficiente de intercalar (*merge*) todos eles em um único arquivo gigante ordenado? O custo de intercalar dois arquivos é a soma de seus tamanhos.
