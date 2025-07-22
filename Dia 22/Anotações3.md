@@ -25,7 +25,7 @@ A seguir estão os problemas clássicos que podem ser resolvidos de forma ótima
 **Problema:** Dado um conjunto de itens, cada um com um peso e um valor, e uma mochila com capacidade de peso limitada. O objetivo é encher a mochila com itens (ou frações de itens) para maximizar o valor total.
 **Escolha Gulosa:** Em cada passo, escolher o item com a **maior razão valor/peso**. (O professor deu um exemplo de vários itens com pesos e valores, e como o valor por peso do item 1 é maior que o do item 2, ele escolhe o item 1, e assim por diante, até que a mochila esteja cheia (Inicialmente ele calculou todas as razões valor/peso, e em seguida ordenou-as em ordem decrescente, e escolheu os itens com as maiores razões valor/peso, até que a mochila esteja cheia))
 
-### Árvore Geradora de Custo Mínimo (Minimum Cost Spanning Tree)
+### Árvore Geradora de Custo Mínimo (Minimum Cost Spanning Tree/Kruskal Method)
 **Problema:** Dado um grafo conectado e com pesos nas arestas, encontrar uma subárvore que conecte todos os vértices com o menor custo total possível (soma dos pesos das arestas).
 **Abordagens Gulosas:**
     * **Algoritmo de Kruskal:** Ordenar todas as arestas por peso em ordem crescente. Adicionar a próxima aresta de menor custo, desde que ela não forme um ciclo com as arestas já adicionadas.
@@ -38,6 +38,8 @@ Na visualização o grafo original era um quadrado com um x, e após, ficou 1-2
                                                                          4 3
 
 Essa foi apenas uma resolução, há várias para um grafo.
+
+Ele também dá outro exemplo com uma Spanning Tree que forma um looping, no qual você não poderia usar o MST, mas você consegue achar o valor mínimo (Kruskal) para conectar os componentes.
 
 
 
