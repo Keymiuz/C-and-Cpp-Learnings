@@ -95,4 +95,17 @@ Crescendo apenas mais um valor -> 1, 3.3, 11, 121, 1331 e 2048 (ordem 1, logn, n
 
 Quando utilizar: quando você não acha a solução para o problema nas anotações clássicas, como por exemplo a função 2n∛n+5n+6 -> neste caso a anotação seria 2n∛n, porem como não temos a anotação 2n∛n na regra geral, usamos ou a upper bound ou lower bound, que neste caso seria n^2 ou ThetaN, que são as anotações mais próxima da função 2n∛n.
 
+A função completa é: $f(n) = 2n^{4/3} + 5n^1 + 6n^0$.
+
+Passo a passo: 
+
+**Identificar o termo dominante**
+Comparamos os expoentes: $4/3 \approx 1.33$, $1$ e $0$.
+O maior expoente é $4/3$. Portanto, o termo dominante é $2n^{4/3}$.
+
+**Localizar na hierarquia**
+Agora, nos perguntamos: onde $\Theta(n^{4/3})$ se encaixa na nossa regra geral?
+Como $1 < 4/3 < 2$ (ou seja, $1 < 1.33 < 2$), podemos afirmar que:
+$O(n) < O(n^{4/3}) < O(n^2)$
+
 
