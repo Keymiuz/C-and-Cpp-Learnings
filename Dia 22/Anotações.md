@@ -61,19 +61,19 @@ Estas fórmulas descrevem o custo de algoritmos recursivos.
 
 ## Principais Notações Assintóticas
 
-### 1. Big O - $O(f(n))$
+### 1. Big O - $O(f(n))$ (Upper Bound)
 * **O que representa:** O **limite superior** (upper bound) ou o **pior caso** (worst-case). Descreve a taxa de crescimento máxima de um algoritmo.
 * **Significado:** A função não crescerá mais rápido que $f(n)$.
 * **Analogia:** "Esta viagem de carro levará **no máximo** 5 horas." (Pode levar menos, mas não mais).
 * **Exemplo:** Um algoritmo de busca linear em um array é $O(n)$ porque, no pior caso, ele terá que percorrer o array inteiro.
 
-### 2. Big Omega - $\Omega(f(n))$
+### 2. Big Omega - $\Omega(f(n))$ (Lower ou Avarege Bound)
 * **O que representa:** O **limite inferior** (lower bound) ou o **melhor caso** (best-case). Descreve a taxa de crescimento mínima de um algoritmo.
 * **Significado:** A função não crescerá mais lentamente que $f(n)$.
 * **Analogia:** "Vou receber **no mínimo** R$ 1.000 de bônus." (Pode ser mais, mas não menos).
 * **Exemplo:** O mesmo algoritmo de busca linear é $\Omega(1)$ porque, no melhor caso, o elemento procurado é o primeiro, e a busca termina instantaneamente.
 
-### 3. Big Theta - $\Theta(f(n))$
+### 3. Big Theta - $\Theta(f(n))$ (Tight ou Lower Bound)
 * **O que representa:** O **limite exato** (tight bound) ou o **caso médio** (average-case). Descreve a taxa de crescimento precisa de um algoritmo.
 * **Significado:** A função cresce na mesma taxa que $f(n)$. Para que uma função seja $\Theta(f(n))$, ela precisa ser tanto $O(f(n))$ quanto $\Omega(f(n))$.
 * **Analogia:** "Vou trabalhar por **exatamente** 8 horas hoje." (Nem mais, nem menos).
@@ -89,4 +89,10 @@ Como por exemplo, se o valor de n for 8, temos -> 1, 3, 8, 64, 512 e 256 (ordem 
 Mas agora se o valor for 10 -> 1, 3.2, 10, 100, 1000, 10000, 1024 (ordem 1, logn, n, n^2, n^3, 2^n,) -> aqui o valor de 2^n já supera n^2.
 
 Crescendo apenas mais um valor -> 1, 3.3, 11, 121, 1331 e 2048 (ordem 1, logn, n, n^2, n^3, 2^n,) -> aqui superando o valor por muito
+
+
+## Quando utilizar Lower ou Upper Bound?
+
+Quando utilizar: quando você não acha a solução para o problema nas anotações clássicas, como por exemplo a função 2n∛n+5n+6 -> neste caso a anotação seria 2n∛n, porem como não temos a anotação 2n∛n na regra geral, usamos ou a upper bound ou lower bound, que neste caso seria n^2 ou ThetaN, que são as anotações mais próxima da função 2n∛n.
+
 
