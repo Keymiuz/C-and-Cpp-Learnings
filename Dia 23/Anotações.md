@@ -60,6 +60,7 @@ Essa abordagem é chamada de **Bottom-Up** porque começa dos casos mais simples
 * **Aplicação de DP:** O comprimento da LCS de duas strings `X` e `Y` depende da LCS de seus prefixos (para visualização melhor, voltar no tópico 430 do curso).
     * Se os últimos caracteres de `X` e `Y` são iguais, a LCS é `1 + LCS(prefixo de X, prefixo de Y)`.
     * Se forem diferentes, é o `máximo(LCS(X, prefixo de Y), LCS(prefixo de X, Y))`.
+    * O número total de "sequências comuns" é o número de células preenchidas na tabela (valores 0 e 1) -> Como o professor deu um exemplo com uma sequencia de 3 letras, nós temos 2^3 = 8 sequências comuns, mas o valor é sempre 2^len(X) (ou 2^n).
 
 #### Soma Máxima de Subarray (Max Subarray Sum)
 
