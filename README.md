@@ -4,11 +4,11 @@ Bem-vindo ao meu repositório de aprendizado! Este projeto serve como um diário
 
 O principal objetivo é documentar e praticar os conceitos que aprendi no curso "Mastering Data Structures & Algorithms using C and C++", além de outras fontes de estudo.
 
-## 🚀 Sobre o Projeto
+## Sobre o Projeto
 
 Este repositório contém implementações de diversas estruturas de dados e algoritmos clássicos, desenvolvidos como forma de solidificar o conhecimento teórico. Cada pasta geralmente representa um tópico ou um conceito específico, contendo o código-fonte e exemplos práticos.
 
-## 📚 Tópicos Abordados
+## Tópicos Abordados
 
 Até o momento, os seguintes tópicos foram explorados e implementados:
 
@@ -50,4 +50,4 @@ g++ nome_do_arquivo.cpp -o saida
 ## Conteúdos de Apoio Adicionais:
 
 Estou utilizando o livro **"Algorithms in C*** de Robert Sedgewick como apoio para meus estudos
-*Link do livro:* https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf
+**Link do livro:** https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf
