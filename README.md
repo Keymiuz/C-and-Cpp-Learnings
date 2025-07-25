@@ -50,4 +50,5 @@ g++ nome_do_arquivo.cpp -o saida
 ## Conteúdos de Apoio Adicionais:
 
 Estou utilizando o livro **"Algorithms in C*** de Robert Sedgewick como apoio para meus estudos
+
 **Link do livro:** https://theswissbay.ch/pdf/Gentoomen%20Library/Algorithms/Algorithms%20in%20C.pdf
